@@ -1,5 +1,9 @@
 # Todo App – FastAPI + React
 
+[![Deploy to GitHub Pages](https://img.shields.io/badge/deploy-GitHub%20Pages-222222?logo=githubpages)](https://<user>.github.io/todo-app-fastapi-react/)
+[![Backend on Railway](https://img.shields.io/badge/backend-Railway-0B0D0E?logo=railway)](https://fastapi-todo.up.railway.app/docs)
+[![GitHub stars](https://img.shields.io/github/stars/<user>/todo-app-fastapi-react?style=social)](https://github.com/<user>/todo-app-fastapi-react)
+
 簡單但完整的全端待辦清單專案，後端使用 **FastAPI + SQLite**，前端使用 **React + Vite + TailwindCSS**，支援深色模式、內聯編輯、搜尋 / 排序與自動重新整理。
 
 > 建議先在本機完成開發，再將前端部署到 Vercel，後端部署到 Render。
@@ -171,7 +175,7 @@ Base URL：`/`
    - `VITE_API_BASE_URL=https://your-todo-backend.onrender.com`
 6. 部署完成後，前端會用 `VITE_API_BASE_URL` 作為 axios baseURL。
 
-> 目前 `services/api.js` 預設使用 `http://localhost:8000`，如果要切換成 Vercel + Render，請將它改成讀取 `import.meta.env.VITE_API_BASE_URL` 並在 .env 檔中設定。
+> 目前 `services/api.js` 已改成讀取 `import.meta.env.VITE_API_BASE_URL`，本機開發可在 `frontend/.env.local` 設定，GitHub Pages / Vercel 則在環境變數中設定。
 
 ---
 

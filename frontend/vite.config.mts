@@ -9,6 +9,7 @@ export default defineConfig({
   build: {
     outDir: "dist",
   },
-  base: "./",
+  // 將 <repo-name> 換成你的 GitHub repo 名稱
+  base: "/todo-app-fastapi-react/",
 });
 
