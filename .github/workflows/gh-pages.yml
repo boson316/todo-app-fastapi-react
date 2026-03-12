@@ -1,5 +1,8 @@
 name: Deploy Vite to GitHub Pages
 
+# Build frontend (Vite + React) and deploy to GitHub Pages.
+# 後端使用 Railway，VITE_API_BASE_URL 指向 Railway FastAPI API。
+
 on:
   push:
     branches: [main]
@@ -28,7 +31,6 @@ jobs:
       - name: Build
         working-directory: frontend
         env:
-          # TODO: 部署後把下面網址換成你的 Railway 後端 URL
           VITE_API_BASE_URL: https://todo-app-fastapi-react-production.up.railway.app
         run: npm run build
 

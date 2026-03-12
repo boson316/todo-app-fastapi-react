@@ -1,8 +1,8 @@
 # Todo App – FastAPI + React
 
-[![Deploy to GitHub Pages](https://img.shields.io/badge/deploy-GitHub%20Pages-222222?logo=githubpages)](https://<user>.github.io/todo-app-fastapi-react/)
-[![Backend on Railway](https://img.shields.io/badge/backend-Railway-0B0D0E?logo=railway)](https://fastapi-todo.up.railway.app/docs)
-[![GitHub stars](https://img.shields.io/github/stars/<user>/todo-app-fastapi-react?style=social)](https://github.com/<user>/todo-app-fastapi-react)
+[![Deploy to GitHub Pages](https://img.shields.io/badge/deploy-GitHub%20Pages-222222?logo=githubpages)](https://boson316.github.io/todo-app-fastapi-react/)
+[![Backend on Railway](https://img.shields.io/badge/backend-Railway-0B0D0E?logo=railway)](https://todo-app-fastapi-react-production.up.railway.app/docs)
+[![GitHub stars](https://img.shields.io/github/stars/boson316/todo-app-fastapi-react?style=social)](https://github.com/boson316/todo-app-fastapi-react)
 
 簡單但完整的全端待辦清單專案，後端使用 **FastAPI + SQLite**，前端使用 **React + Vite + TailwindCSS**，支援深色模式、內聯編輯、搜尋 / 排序與自動重新整理。
 
@@ -12,10 +12,8 @@
 
 ## Demo
 
-- 前端（Vercel）：`https://your-todo-frontend.vercel.app`
-- 後端（Render / Railway）：`https://your-todo-backend.onrender.com`
-
-請將上面的網址替換成你實際部署後的網址。
+- 前端（GitHub Pages）：`https://boson316.github.io/todo-app-fastapi-react/`
+- 後端（Railway）：`https://todo-app-fastapi-react-production.up.railway.app/docs`
 
 ---
 
@@ -149,31 +147,29 @@ Base URL：`/`
 
 ---
 
-## 部署 – 後端 (Render 範例)
+## 部署 – 後端 (Railway)
 
 1. 將 `backend/` push 到 GitHub。
-2. 前往 Render，建立 **New Web Service**，連結 GitHub repo。
-3. 設定：
-   - Build command: `pip install -r backend/requirements.txt`
-   - Start command: `cd backend && uvicorn main:app --host 0.0.0.0 --port 10000`
-   - Python version 選擇支援的 3.12（避免 3.13 的相容性問題）。
-4. 在 Render 的「環境變數」中加入：
+2. 前往 Railway，建立 **New Project**，連結此 repo。
+3. 建立 service，Root directory 設為 `backend`，並設定：
+   - Build command: `pip install -r requirements.txt`
+   - Start command: `uvicorn main:app --host 0.0.0.0 --port 8000`
+   - Python version 建議使用 3.12（避免部分套件尚未完全支援 3.13）。
+4. 在 Railway 的「環境變數」中加入：
    - `DB_URL=sqlite:///./todos.db`（或你自己的雲端 DB）
-5. 部署完成後，記下後端網址，例如：`https://your-todo-backend.onrender.com`
+5. 部署完成後，記下後端網址，例如：`https://todo-app-fastapi-react-production.up.railway.app`
+
+> 注意：Railway 免費方案使用 SQLite，重新部署或服務休眠後資料可能清空，適合作為 Demo 或 Side Project 使用。若要長期穩定可考慮換 PostgreSQL 並更新 `DB_URL`。
 
 ---
 
-## 部署 – 前端 (Vercel 範例)
+## 部署 – 前端 (GitHub Pages)
 
-1. 將 `frontend/` push 到 GitHub（可與 backend 在同一 repo）。
-2. 前往 Vercel，**New Project** → 選擇你的 repo。
-3. Framework 選擇 **Vite**。
-4. 設定：
-   - Build Command: `npm run build`
-   - Output Directory: `frontend/dist`
-5. 在 Vercel 設定環境變數：
-   - `VITE_API_BASE_URL=https://your-todo-backend.onrender.com`
-6. 部署完成後，前端會用 `VITE_API_BASE_URL` 作為 axios baseURL。
+1. 將整個 `todo-app` push 到 GitHub。
+2. 使用 `.github/workflows/gh-pages.yml`（本 repo 已提供），在 push 到 `main` 時：
+   - 進入 `frontend/` 安裝依賴並 build
+   - 將 `frontend/dist` 自動部署到 GitHub Pages
+3. 在 GitHub repo 的 `Settings` → `Pages` 中，確認 Source 選擇 GitHub Actions。
 
 > 目前 `services/api.js` 已改成讀取 `import.meta.env.VITE_API_BASE_URL`，本機開發可在 `frontend/.env.local` 設定，GitHub Pages / Vercel 則在環境變數中設定。
 
@@ -218,5 +214,13 @@ npm install -D vitest @testing-library/react @testing-library/jest-dom jsdom
 
 ## 截圖
 
-你可以在本機跑起前後端後，使用瀏覽器截圖（Swagger 頁面 + 前端 Todo 畫面），放進這個 README，方便之後 demo 或履歷使用。
+（以下為示意，你可以用實際部署畫面更新這些截圖）
+
+前端畫面（淺色版）：
+
+![Todo App UI](./docs/screenshot-frontend.png)
+
+後端 Swagger：
+
+![FastAPI Swagger](./docs/screenshot-swagger.png)
 
