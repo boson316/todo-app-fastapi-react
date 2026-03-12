@@ -212,15 +212,3 @@ npm install -D vitest @testing-library/react @testing-library/jest-dom jsdom
 
 ---
 
-## 截圖
-
-（以下為示意，你可以用實際部署畫面更新這些截圖）
-
-前端畫面（淺色版）：
-
-![Todo App UI](./docs/screenshot-frontend.png)
-
-後端 Swagger：
-
-![FastAPI Swagger](./docs/screenshot-swagger.png)
-
