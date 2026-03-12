@@ -29,7 +29,7 @@ jobs:
         working-directory: frontend
         env:
           # TODO: 部署後把下面網址換成你的 Railway 後端 URL
-          VITE_API_BASE_URL: https://<你的後端 Railway 網址>
+          VITE_API_BASE_URL: https://todo-app-fastapi-react-production.up.railway.app
         run: npm run build
 
       - name: Upload artifact
