@@ -244,7 +244,7 @@ export default function TodoList({ refreshKey, onChanged }) {
                     {isEditing ? (
                       <div className="space-y-1">
                         <input
-                          className="w-full px-2 py-1 rounded-md bg-slate-900 border border-slate-700 text-sm focus:outline-none focus:ring-2 focus:ring-sky-500"
+                          className="w-full px-2 py-1 rounded-md bg-slate-100 dark:bg-slate-900 border border-slate-300 dark:border-slate-700 text-sm focus:outline-none focus:ring-2 focus:ring-sky-500"
                           value={editingTitle}
                           onChange={(e) => setEditingTitle(e.target.value)}
                           onKeyDown={(e) => {
@@ -254,7 +254,7 @@ export default function TodoList({ refreshKey, onChanged }) {
                           autoFocus
                         />
                         <textarea
-                          className="w-full px-2 py-1 rounded-md bg-slate-900 border border-slate-700 text-xs focus:outline-none focus:ring-2 focus:ring-sky-500 min-h-[60px]"
+                          className="w-full px-2 py-1 rounded-md bg-slate-100 dark:bg-slate-900 border border-slate-300 dark:border-slate-700 text-xs focus:outline-none focus:ring-2 focus:ring-sky-500 min-h-[60px]"
                           value={editingDesc}
                           onChange={(e) => setEditingDesc(e.target.value)}
                           onKeyDown={(e) => {
