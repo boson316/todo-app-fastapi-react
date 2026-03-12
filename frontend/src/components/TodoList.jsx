@@ -265,7 +265,7 @@ export default function TodoList({ refreshKey, onChanged }) {
                           <button
                             type="button"
                             onClick={handleEditCancel}
-                            className="text-xs px-2 py-1 rounded-md bg-slate-700 hover:bg-slate-600"
+                            className="text-xs px-2 py-1 rounded-md bg-slate-200 hover:bg-slate-300 text-slate-800 dark:bg-slate-700 dark:hover:bg-slate-600 dark:text-slate-100"
                           >
                             取消
                           </button>
