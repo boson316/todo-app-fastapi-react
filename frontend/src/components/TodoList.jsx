@@ -69,7 +69,7 @@ export default function TodoList({ refreshKey, onChanged }) {
     try {
       const res = await updateTodo(todo.id, {
         title: todo.title,
-        desc: todo.description,
+        desc: todo.desc,
         completed: !todo.completed,
       });
       applyPersistence(
@@ -95,7 +95,7 @@ export default function TodoList({ refreshKey, onChanged }) {
   const handleEditStart = (todo) => {
     setEditingId(todo.id);
     setEditingTitle(todo.title);
-    setEditingDesc(todo.description ?? "");
+    setEditingDesc(todo.desc ?? "");
   };
 
   const handleEditCancel = () => {
@@ -148,7 +148,7 @@ export default function TodoList({ refreshKey, onChanged }) {
       list = list.filter(
         (t) =>
           t.title.toLowerCase().includes(term) ||
-          (t.description || "").toLowerCase().includes(term)
+          (t.desc || "").toLowerCase().includes(term)
       );
     }
 
@@ -225,10 +225,8 @@ export default function TodoList({ refreshKey, onChanged }) {
             return (
               <li
                 key={todo.id}
-                className={`flex items-start justify-between gap-3 px-3 py-2 rounded-lg border transition-colors ${
-                  todo.completed
-                    ? "bg-emerald-500/5 border-emerald-500/60"
-                    : "bg-rose-500/5 border-rose-500/40"
+                className={`flex items-start justify-between gap-3 px-3 py-2 rounded-lg border transition-colors bg-white dark:bg-slate-900 ${
+                  todo.completed ? "border-emerald-400" : "border-slate-200 dark:border-slate-700"
                 }`}
               >
                 <div className="flex items-start gap-2 flex-1">
@@ -236,10 +234,7 @@ export default function TodoList({ refreshKey, onChanged }) {
                     type="checkbox"
                     checked={todo.completed}
                     onChange={() => handleToggle(todo)}
-                    className={`mt-1 h-4 w-4 rounded border-emerald-500 text-emerald-500 focus:ring-emerald-500 ${
-                      !todo.completed &&
-                      "border-rose-500 text-rose-500 focus:ring-rose-500"
-                    }`}
+                    className="mt-1 h-4 w-4 rounded border-slate-400 text-emerald-500 focus:ring-emerald-500"
                   />
 
                   <div
@@ -288,15 +283,15 @@ export default function TodoList({ refreshKey, onChanged }) {
                         <div
                           className={`font-medium transition-all duration-200 ${
                             todo.completed
-                              ? "line-through text-emerald-400"
-                              : "text-rose-500 dark:text-rose-300"
+                              ? "line-through text-emerald-500"
+                              : "text-slate-900 dark:text-slate-100"
                           }`}
                         >
                           {todo.title}
                         </div>
-                        {todo.description && (
+                        {todo.desc && (
                           <div className="text-xs text-slate-400 mt-1">
-                            {todo.description}
+                            {todo.desc}
                           </div>
                         )}
                       </div>
